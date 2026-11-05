@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 570" fill="none">
+  <title>Ruta de Grooming Salon a El Ágora con atajos de regreso a Grooming Salon</title>
+  <path d="M20 15H260V560H20Z" fill="#0B141D" stroke="#45606D" stroke-width="2"/>
+  <path d="M140 25V525" stroke="#5AD6DF" stroke-opacity=".48" stroke-width="5"/>
+  <path d="M27 377V62M27 62H35M27 167H35M27 272H35M27 377H35" stroke="#E4B66A" stroke-width="3"/>
+  <path d="M29 56L39 62L29 68" stroke="#E4B66A" stroke-width="3"/>
+  <g fill="#10212B" stroke="#65818D" stroke-width="2">
+    <path d="M35 25H245V100H35z"/>
+    <path d="M35 130H245V205H35z"/>
+    <path d="M35 235H245V310H35z"/>
+    <path d="M35 340H245V415H35z"/>
+    <path d="M35 445H245V520H35z"/>
+  </g>
+  <g stroke="#5AD6DF" stroke-width="3">
+    <path d="M140 100V130M140 205V235M140 310V340M140 415V445"/>
+    <path d="M132 100H148M132 130H148M132 205H148M132 235H148M132 310H148M132 340H148M132 415H148M132 445H148"/>
+  </g>
+  <g stroke="#45606D" stroke-width="2">
+    <path d="M55 38H225M55 88H225M55 143H225M55 193H225M55 248H225"/>
+    <path d="M62 50V76M76 50V76M204 50V76M218 50V76"/>
+    <path d="M62 155V181M76 155V181M204 155V181M218 155V181"/>
+    <path d="M62 260V286M76 260V286M204 260V286M218 260V286"/>
+    <path d="M62 365V391M76 365V391M204 365V391M218 365V391"/>
+    <path d="M62 470V496M76 470V496M204 470V496M218 470V496"/>
+  </g>
+  <text x="140" y="547" fill="#E4B66A" font-family="monospace" font-size="12" text-anchor="middle">FINALES</text>
+</svg>

@@ -1,0 +1,34 @@
+# Scala / sbt
+target/
+project/target/
+project/project/
+.scala-build/
+
+# IDE metadata and generated project files
+.bsp/
+.bloop/
+.metals/
+.idea/
+*.iml
+
+# VS Code: keep shareable workspace configuration, ignore local files
+.vscode/*
+!.vscode/settings.json
+!.vscode/extensions.json
+!.vscode/launch.json
+!.vscode/tasks.json
+
+# JavaScript tooling (only generated or installed dependencies)
+node_modules/
+
+# Operating-system files
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# Logs, temporary files, and editor swap files
+*.log
+*.tmp
+*.swp
+*.swo
+*~
