@@ -180,13 +180,23 @@ final class StoryGameSuite extends FunSuite:
   test("the optional records puzzle gives bounded confidence and the research clue"):
     val source =
       """val registros = List("BORIS", "MANIZEH", "TESSA")
-        |val pista = registros.filter(_.contains("MANIZEH")).sorted""".stripMargin
+        |val pista = registros.filter(_ == "MANIZEH")""".stripMargin
     PuzzleInterpreter.run(PuzzleId.PostgradRecords, source, StoryState.initial) match
       case GameResult.Success(story) =>
         assertEquals(story.confidence, 7)
         assert(story.hasItem(protocolocero.domain.game.StoryItem.ManizehRecord))
       case GameResult.Failure(message) =>
         fail(message)
+
+  test("the optional records puzzle rejects a filter that does not select Manizeh"):
+    val source =
+      """val registros = List("BORIS", "MANIZEH", "TESSA")
+        |val pista = registros.filter(_ == "BORIS")""".stripMargin
+    val result = PuzzleInterpreter.run(PuzzleId.PostgradRecords, source, StoryState.initial)
+
+    assert(result.isInstanceOf[GameResult.Failure])
+    assertEquals(StoryState.initial.confidence, 5)
+    assertEquals(StoryState.initial.inventory, Nil)
 
   test("the communications puzzle evaluates an if/else before the final choice"):
     val solution =
@@ -259,7 +269,7 @@ final class StoryGameSuite extends FunSuite:
     val confessed = value(StoryRules.applyChoice(filesRead, StoryChoice.ConfessPrompt))
     val puzzleCode =
       """val registros = List("BORIS", "MANIZEH", "TESSA")
-        |val pista = registros.filter(_.contains("MANIZEH")).sorted""".stripMargin
+        |val pista = registros.filter(_ == "MANIZEH")""".stripMargin
     val puzzle = value(PuzzleInterpreter.run(PuzzleId.PostgradRecords, puzzleCode, confessed))
     val hour = value(StoryRules.applyChoice(puzzle, StoryChoice.FinishFreeHour))
 

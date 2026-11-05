@@ -72,7 +72,7 @@ object StoryScenes:
             line("Fidel", "¿Despertaste, Boris? Tessa dice que el control se perdió hace 47 minutos."),
             line("Tessa", "Encontré 37 versiones de tu prompt, Boris. Ninguna pasó control de calidad."),
             line("Fidel", "¿Vamos a morir por un prompt? Eso sí sería un final académico."),
-            line("Fidel", "Pista de código: while repite instrucciones mientras su condición sea verdadera. Si no cambias el valor que controla la condición, el bucle nunca termina.")
+            line("Fidel", "Pista de código: while repite instrucciones mientras su condición sea verdadera. Si no cambias el valor que controla la condición, el bucle nunca termina. while(condicion) {cuerpo}")
           )
         case StoryAction.GroomingDesk =>
           List(
@@ -133,7 +133,7 @@ object StoryScenes:
           List(
             line("Alexis-Jesús", "La programación funcional nos enseña a transformar el estado sin perder la cabeza."),
             line("Alexis-Jesús", "También conviene leer los registros antes de decidir quién tiene la culpa."),
-            line("Alexis-Jesús", "filter crea una lista nueva con los elementos que cumplen una condición; sorted devuelve esos elementos ordenados.")
+            line("Alexis-Jesús", "filter crea una lista nueva con los elementos que cumplen una condición. Dentro de la condición, _ representa cada elemento; usa == para compararlo con \"MANIZEH\".")
           )
         case StoryAction.PostgradFiles =>
           List(
@@ -234,7 +234,7 @@ object StoryScenes:
         case StoryChoice.TrustTessa =>
           List(line("Tessa", "El laboratorio cometió un error. No te contaré nada más sobre la Sprint Review."))
         case StoryChoice.StartOptionalPuzzle =>
-          List(line("Alexis-Jesús", "Filtra los registros de Manizeh y ordénalos para encontrar la nota correcta."))
+          List(line("Alexis-Jesús", "Filtra los registros para conservar solo la entrada igual a MANIZEH."))
         case StoryChoice.FinishFreeHour =>
           List(line("Chelito", "HORA LIBRE. Una pausa breve también cuenta como progreso."))
         case StoryChoice.ShutDownTessa =>

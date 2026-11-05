@@ -458,21 +458,15 @@ object PuzzleInterpreter:
             Failure("Las comunicaciones siguen desconectadas.")
 
   private def runRecords(source: List[String], state: StoryState): GameResult[StoryState] =
-    val text = source.mkString("\n").toLowerCase
-    val filters = text.contains(".filter") || text.contains("filter(")
-    val orders = text.contains(".sorted") || text.contains("sort(")
-    val processesRecords = text.contains("registro") || text.contains("record")
+    val normalized = source.mkString("\n").toLowerCase.replaceAll("\\s+", "")
+    val filtersManizeh = normalized.contains("""pista=registros.filter(_=="manizeh")""")
 
-    if filters && orders && processesRecords then
+    if filtersManizeh then
       val withTrust = StoryState.changeConfidence(state, 2)
       val withRecord = StoryState.addItem(withTrust, StoryItem.ManizehRecord)
       Success(StoryState.solvePuzzle(withRecord, PuzzleId.PostgradRecords))
-    else if filters && processesRecords then
-      val withTrust = StoryState.changeConfidence(state, 1)
-      val withRecord = StoryState.addItem(withTrust, StoryItem.ManizehRecord)
-      Success(StoryState.solvePuzzle(withRecord, PuzzleId.PostgradRecords))
     else
-      Failure("Usa una función filter sobre los registros; ordénalos para encontrar la pista completa.")
+      Failure("""Usa filter con la condición _ == "MANIZEH" y guarda el resultado en pista.""")
 
   private def cleanSource(source: String): List[String] =
     source

@@ -105,9 +105,10 @@ la vista de exploración y sus editores están en
 [`ExplorationVentana.scala`](src/main/scala/protocolocero/ui/screens/ExplorationVentana.scala).
 
 Los retos de energía, DJ y comunicaciones parsean y simulan una DSL limitada.
-El reto opcional de registros es distinto: solo comprueba que el texto mencione
-registros y `filter`, y otorga una recompensa mayor si también aparece `sorted`;
-no ejecuta ni verifica el resultado de esas transformaciones.
+El reto opcional de registros comprueba que el código aplique `filter` a
+`registros` usando la condición de igualdad con `"MANIZEH"` y asigne el
+resultado a `pista`. No ejecuta la transformación; el editor muestra la lista
+inicial y el resultado esperado.
 
 ## Requisitos técnicos de la materia
 

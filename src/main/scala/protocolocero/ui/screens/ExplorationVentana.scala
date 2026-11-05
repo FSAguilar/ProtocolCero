@@ -361,7 +361,7 @@ object ExplorationVentana:
       div(className := "puzzle-editor__heading")(
         div(
           h2(text("REGISTRO DE INVESTIGACIÓN")),
-          p(text("Filtra los registros por MANIZEH y ordénalos para encontrar la pista."))
+          p(text("Usa filter para conservar en pista solo las entradas iguales a MANIZEH. En la condición, _ representa cada elemento de la lista; == compara si es igual al texto indicado."))
         ),
         button(
           onClick(Message.ClosePuzzle),
@@ -369,12 +369,18 @@ object ExplorationVentana:
           ariaLabel := "Cerrar editor"
         )(text("×"))
       ),
+      pre(className := "puzzle-editor__scaffold")(
+        text("DATOS DISPONIBLES\nval registros = List(\"BORIS\", \"MANIZEH\", \"TESSA\")\n\nTU CÓDIGO\nEscribe una expresión y guárdala en la variable pista.")
+      ),
       textarea(
         className := "compiler-input puzzle-editor__input",
         value := programText,
         onInput(value => Message.PuzzleInputChanged(value)),
-        ariaLabel := "Código del puzzle"
+        ariaLabel := "Transformación de los registros"
       )(text(programText)),
+      pre(className := "puzzle-editor__scaffold")(
+        text("COMPROBACIÓN FINAL\nLa lista pista debe conservar solo la entrada MANIZEH.\n\nRESULTADO ESPERADO\npista = List(\"MANIZEH\")")
+      ),
       div(className := "puzzle-editor__actions")(
         button(
           onClick(Message.RunPuzzle),

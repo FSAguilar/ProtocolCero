@@ -89,6 +89,28 @@ final class UpdateSuite extends FunSuite:
     assert(lastLine.roomDialogue.exists(_.currentLine.exists(_.speaker.contains("Fidel"))))
     assert(returnedToChoices.roomDialogue.exists(_.currentLine.exists(_.text.contains("while repite"))))
 
+  test("the Malegria rest dialogue advances through its list length hint"):
+    val atMalegria = Model.initial.copy(
+      screen = Screen.Exploration,
+      game = Model.initial.game.copy(currentRoomId = "malegria")
+    )
+    val conversation = Update(atMalegria, Message.SelectStoryAction(StoryAction.MalegriaRest))
+    val secondLine = Update(conversation, Message.AdvanceRoomDialogue)
+    val thirdLine = Update(secondLine, Message.AdvanceRoomDialogue)
+
+    assertEquals(
+      conversation.roomDialogue.flatMap(_.currentLine.map(_.text)),
+      Some("Hay un conejo de peluche olvidado en la zona de descanso.")
+    )
+    assertEquals(
+      secondLine.roomDialogue.flatMap(_.currentLine.map(_.text)),
+      Some("No todo lo que importa tiene un valor económico.")
+    )
+    assertEquals(
+      thirdLine.roomDialogue.flatMap(_.currentLine.map(_.text)),
+      Some("Pista: Usa lista.length para representar el tamaño de una lista como límite")
+    )
+
   test("moving away clears the active story conversation"):
     val atGrooming = Model.initial.copy(
       screen = Screen.Exploration,
